@@ -1,0 +1,37 @@
+create table VIDEOGAME
+(
+    ID    int          not null AUTO_INCREMENT,
+    TITLE varchar(100) not null,
+    PRIMARY KEY (ID)
+);
+create table PROMOTION
+(
+    ID           int not null AUTO_INCREMENT,
+    VALID_FROM   TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    PRICE        numeric(5, 2),
+    VIDEOGAME_ID int not null,
+    PRIMARY KEY (ID),
+    CONSTRAINT fk_VIDEOGAME_ID_PROMOTION
+        FOREIGN KEY (VIDEOGAME_ID)
+            REFERENCES VIDEOGAME (ID)
+);
+
+
+create table STOCK
+(
+    ID      INT        not null AUTO_INCREMENT,
+    AVAILABILITY boolean,
+    LAST_UPDATED TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    VIDEOGAME_ID int        not null,
+    PRIMARY KEY (ID),
+    CONSTRAINT fk_VIDEOGAME_ID_STOCK
+        FOREIGN KEY (VIDEOGAME_ID)
+            REFERENCES VIDEOGAME (ID)
+);
+
+CREATE SEQUENCE STOCK_SEQ START WITH 1000 INCREMENT BY 1;
+
+
+
+
+

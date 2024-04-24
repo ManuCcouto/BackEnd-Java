@@ -1,0 +1,5 @@
+# Ignore IDEA IDE configuration files
+.idea/
+
+# Ignore compiled output and target directories
+/target/
